@@ -1,0 +1,83 @@
+<div class="bg-active-order">
+    <div class="container">
+      <div class="row">
+        <div class="col xl8 offset-xl2">
+          <div *ngIf="order$ | async as order;"  class="active-order">
+            <a  class="info-link"   *ngFor="let or of order" (click)="selectOrder(or)" >
+              <div  class="active-order-item">
+                <div class="active-order-item-date">
+                  <span >{{or.dateStart}}</span><br><br>
+                  <span>{{or.dateEnd}}</span>
+                </div>
+                <div class="active-order-item-way">
+                  <span>{{or.startCity}} - {{or.endCity}}</span>
+                </div>
+
+                <div *ngIf="or.transporter !== null; else empty" class="transporter-block" >
+                  <a class="active-order-item-transporter"><img src="../../assets/img/Input.png"></a>
+                </div>
+                <ng-template #empty>
+                <div class="transporter-block">
+                  <span class=" searching">Пошук перевізника</span>
+                </div>
+              </ng-template>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+    </div>
+    </div>
+
+
+    <div  class="modal modal-fixed-footer" #modal>
+      <div *ngIf="selectedOrder" class="modal-content" >
+      <h4 class="mb1">Замовлення №{{selectedOrder.orderNum}}</h4>
+      <table class="highlight">
+        <thead>
+              <tr>
+                <th>Дата доставки</th>
+                <th>{{selectedOrder.dateStart}} - {{selectedOrder.dateEnd}}</th>
+              </tr>
+              <tr>
+                <th>Місто</th>
+                <th>{{selectedOrder.startCity}} - {{selectedOrder.endCity}}</th>
+              </tr>
+              <tr>
+                <th>Адреса</th>
+                <th>{{selectedOrder.startAdress}} - {{selectedOrder.endAdress}}</th>
+              </tr>
+              <tr>
+                <th>Тип</th>
+                <th>{{selectedOrder.type}}</th>
+              </tr>
+              <tr>
+                <th>Статус</th>
+                <th>{{selectedOrder.status}}</th>
+              </tr>
+              <tr class="trans" >
+                <th>Замовник</th>
+                  <th *ngIf="selectedOrder.transporter !== null; else empty">{{selectedOrder.transporterName}}</th>
+                </tr>
+                <tr class="trans" >
+                  <th>Телефон</th>
+                  <th *ngIf="selectedOrder.transporter !== null; else empty">{{selectedOrder.transporterPhone}}</th>
+              </tr>
+              <tr class="trans" >
+                <th>Ціна</th>
+                  <th *ngIf="selectedOrder.transporter !== null; else empty">{{selectedOrder.price}}</th>
+                </tr>
+                <tr>
+        
+              </thead>
+
+            </table>
+            <div class="row">
+
+              <div *ngIf="selectedOrder.transporter !== null && selectedOrder.status !== 'Активно'; else empty" class="input-field col s3 offset-xl6">
+                  <a  (click)="closeModal()"  class="btn" >Закрити</a>
+                </div>
+
+            </div>
+          </div>
+          </div>

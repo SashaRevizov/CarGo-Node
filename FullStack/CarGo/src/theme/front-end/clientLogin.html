@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style/materialize.min.css">
+    <link rel="stylesheet" href="style/style.min.css">
+    <title>CarGo</title>
+</head>
+<body>
+    <nav>
+        <div class="nav-wrapper">
+            <div class="container">
+                <a href="index.html" class="brand-logo"><img src="img/Logo.png" alt="CarGo"></a>
+                <ul id="nav-mobile" class="right hide-on-med-and-down">
+                    <li><a href="index.html">Головна</a></li>
+                    <li><a href="calculator.html">Калькулятор</a></li>
+                    <li><a href="about.html">Про нас</a></li>
+                    <li class="login"><a class="waves-effect waves-light btn modal-trigger amber accent-4" href="#modal1">Вхід</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>  
+
+    <div class="section log">
+        
+        <div class="container">
+            <div class="row">
+                <div class="col l5 offset-l4">
+                    <div class="login-bg login-client">
+                        <form action="" method="post" >
+                            <div class="input-field col s12">
+                                <input id="email" type="email" class="validate">
+                                <label for="email">Email</label>
+                                <span class="helper-text" data-error="Не коректна пошта" ></span>
+                            </div>
+                            <div class="input-field col s12">
+                                <input id="password" type="password" class="validate" data-length="16">
+                                <label for="password">Пароль</label>
+                                <span class="helper-text" data-error="Не вірний пароль" ></span>
+                            </div>
+                            <div class="log-new">
+                                <a class="a-log" href="clientReg.html">Створити акаунт</a>
+                                <button class="btn waves-effect waves-light amber accent-4" type="submit" name="action">Вхід</button>
+                            </div>
+                            <div class="refresh">
+                                <a href="#"><span>Відновлення паролю</span></a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+               
+
+    <footer class="page-footer">
+            <div class="container">
+                <div class="row">
+                    
+                    <div class="col l4 s12">
+                        <h5 class="white-text">Меню</h5>
+                        <ul>
+                            <li><a class="grey-text text-lighten-3" href="#!">Калькулятор</a></li>
+                            <li><a class="grey-text text-lighten-3" href="#!">Пошук вантажу</a></li>
+                            <li><a class="grey-text text-lighten-3" href="#!">Розміщення вантажу</a></li>
+                            <li><a class="grey-text text-lighten-3" href="#!">Про нас</a></li>
+                        </ul>
+                    </div>
+                    <div class="col l2 offset-xl2 s12">
+                        <h5 class="white-text">Звязок з нами</h5>
+                        <ul>
+                            <li><a href="mailto:support@gmail.com" class="grey-text text-lighten-3" href="#!">support@gmail.com</a></li>
+                            <br><li><img src="img/visa.png" alt=""><img src="img/master.png" alt=""></li>
+                            
+                        </ul>
+                    </div>
+                    
+                </div>          
+                
+            </div>
+            <div class="footer-copyright">
+                <div class="container">
+                    © 2019 Revizov Sasha
+                </div>
+            </div>
+    </footer>     
+
+    
+
+    <div id="modal1" class="modal">
+            <div class="modal-content">
+                    <div class="modal-body">
+                        <a href="clientLogin.html"><img src="img/client.png" alt="cleint" width="200" height="200"></a>
+                        <a href=""><img src="img/transporter.png" alt="transporter" width="200" height="200"></a>
+                        <span>Відправник</span>
+                        <span>Перевізник</span>
+                    </div>
+                    
+                </div>
+                
+            </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="js/materialize.min.js"></script>
+    <script src="js/parallax.min.js"></script>
+    
+    
+
+    <script> 
+        $(document).ready(function(){
+            $('.modal').modal();
+            $('input#password').characterCounter();
+            $('.parallax-window').parallax({imageSrc: 'img/bgone.jpg'});
+        });
+    </script>
+</body>
+</html>

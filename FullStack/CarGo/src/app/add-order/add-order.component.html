@@ -1,0 +1,140 @@
+
+<div class="bg-client-order">
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <div class="container">
+        <div class="row">
+        <div *ngIf="cities$ | async as cities" class="col xl10 offset-xl1">
+            <div class="order-adress">
+                <div class="row">
+                    <span class="col xl6 adress-header">Маршрут</span>
+                </div>
+               
+                <div class="order-input  row">
+                   
+                    <div class="input-field col s1 offset-xl1">
+                        <img src="../../assets/img/Input.png" alt="output">
+                      </div>
+                      
+                      
+                    <div class="input-field col s3 offset-xl1">
+                        <select class="select-add" formControlName="startCity" name="startCity" id="startCity">
+                             <option *ngFor="let city of cities" value={{city.name}}>{{city.name}}</option>
+                        </select>
+                        <label class="active" for="startCity">Місто погрузки</label>
+                        
+                    </div>
+                    <div class="input-field col s5">
+                        <input formControlName="startAdress" maxlength="55" id="startAdress" type="text" [ngClass]="{invalid: form.get('startAdress').invalid && form.get('startAdress').touched}">
+                        <label for="startAdress">Адреса погрузки</label>
+                        <span class="helper-text red-text " *ngIf="form.get('startAdress').invalid && form.get('startAdress').touched" >
+                            <span  *ngIf="form.get('startAdress').errors['required']">Поле не повинно бути порожнім</span>
+                        </span>
+                    </div>
+                </div>
+                <div class="row ">
+                    
+                    <div class="input-field col s1 offset-xl1">
+                        <img src="../../assets/img/Output.png" alt="output">
+                        
+                      </div>>
+                      <div class="input-field col s3 offset-xl1">
+                            <select class="select-add" formControlName="endCity" name="endCity" id="endCity">
+                                 <option *ngFor="let city of cities" value={{city.name}}>{{city.name}}</option>
+                            </select>
+                            <label class="active" for="endCity">Місто доставки</label>
+                            
+                        </div>
+                      <div class="input-field col s5">
+                          <input formControlName="endAdress" maxlength="55" id="endAdress" type="text" [ngClass]="{invalid: form.get('endAdress').invalid && form.get('endAdress').touched}">
+                          <label for="endAdress">Адреса доставки</label>
+                          <span class="helper-text red-text " *ngIf="form.get('endAdress').invalid && form.get('endAdress').touched" >
+                              <span  *ngIf="form.get('endAdress').errors['required']">Поле не повинно бути порожнім</span>
+                          </span>
+                      </div>
+                </div>
+            </div>
+        </div>
+        </div>
+        <div class="row">
+            <div class="col xl10 offset-xl1">
+                <div class="order-info">
+                    
+                    <div class="row">
+                        <span class="col xl6 adress-header">Інформація про вантаж</span>
+                    </div>
+                        <div class="row">
+                            <div class="input-field col s7">
+                                <input formControlName="type" maxlength="70" id="type" type="text" [ngClass]="{invalid: form.get('type').invalid && form.get('type').touched}">
+                                <label for="type">Тип вантажу</label>
+                                <span class="helper-text red-text " *ngIf="form.get('type').invalid && form.get('type').touched" >
+                                  <span  *ngIf="form.get('type').errors['required']">Поле не повинно бути порожнім</span>
+                                </span>
+                            </div>
+                           
+                            <div class="input-field col s2">
+                                <input formControlName="dateStart"  maxlength="10" id="dateStart"  type="date" [ngClass]="{invalid: form.get('dateStart').invalid && form.get('dateStart').touched}">
+                                <label class="active" for="dateStart">Доставка з</label>
+                                
+                                <span class="helper-text red-text " *ngIf="form.get('dateStart').invalid && form.get('dateStart').touched" >
+                                    <span  *ngIf="form.get('dateStart').errors['required']">Поле не повинно бути порожнім</span>
+                                  </span>
+                            </div>
+                            <div class="input-field col s2">
+                                <input formControlName="dateEnd"  maxlength="10" id="dateEnd"  type="date" [ngClass]="{invalid: form.get('dateEnd').invalid && form.get('dateEnd').touched}">
+                                <label class="active" for="dateEnd">Доставка по</label>
+                                <span class="helper-text red-text " *ngIf="form.get('dateEnd').invalid && form.get('dateEnd').touched" >
+                                  
+                                    <span  *ngIf="form.get('dateEnd').errors['required']">Поле не повинно бути порожнім</span>
+                            
+                                  </span>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="input-field col s3">
+                                <input formControlName="length" id="length" type="text" [ngClass]="{invalid: form.get('length').invalid && form.get('length').touched}">
+                                <label for="length">Довжина (м.)</label>
+                                <span class="helper-text red-text " *ngIf="form.get('length').invalid && form.get('length').touched" >
+                                    <span  *ngIf="form.get('length').errors['required']">Поле не повинно бути порожнім</span>
+                                    <span *ngIf="form.get('length').errors['pattern']">Поле не повинно мати символи</span>
+                                  </span>
+                              </div>
+                              <div class="input-field col s3">
+                                  <input formControlName="width" maxlength="10" id="width" type="text" [ngClass]="{invalid: form.get('width').invalid && form.get('width').touched}">
+                                  <label for="width">Ширина (м.)</label>
+                                  <span class="helper-text red-text " *ngIf="form.get('width').invalid && form.get('width').touched" >
+                                      <span  *ngIf="form.get('width').errors['required']">Поле не повинно бути порожнім</span>
+                                      <span *ngIf="form.get('width').errors['pattern']">Поле не повинно мати символи</span>
+                                    </span>
+                                </div>
+                                <div class="input-field col s3">
+                                    <input formControlName="height" maxlength="10" id="height" type="text" [ngClass]="{invalid: form.get('height').invalid && form.get('height').touched}">
+                                    <label for="height">Висота (м.)</label>
+                                    <span class="helper-text red-text " *ngIf="form.get('height').invalid && form.get('height').touched" >
+                                        <span  *ngIf="form.get('height').errors['required']">Поле не повинно бути порожнім</span>
+                                        <span *ngIf="form.get('height').errors['pattern']">Поле не повинно мати символи</span>
+                                      </span>
+                                </div>
+                                <div class="input-field col s3">
+                                    <input formControlName="weight" maxlength="6" id="weight" type="text" [ngClass]="{invalid: form.get('weight').invalid && form.get('weight').touched}">
+                                    <label for="weight">Маса (кг.)</label>
+                                    <span class="helper-text red-text " *ngIf="form.get('weight').invalid && form.get('weight').touched" >
+                                        <span  *ngIf="form.get('weight').errors['required']">Поле не повинно бути порожнім</span>
+                                        <span *ngIf="form.get('weight').errors['pattern']">Поле не повинно мати символи</span>
+                                      </span>
+                                </div>
+                        </div>
+
+                   <div class="row">
+                      <div class="log-new col offset-xl8">
+                          <button [disabled]="form.invalid" class="btn waves-effect waves-light amber accent-4 large" type="submit" name="action">Створити</button>
+                      </div>
+                   </div>
+                   
+                </div>
+
+            </div>
+
+        </div>
+      </div>
+        </form>
+    </div>

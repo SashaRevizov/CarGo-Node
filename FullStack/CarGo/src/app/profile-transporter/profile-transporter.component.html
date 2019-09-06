@@ -1,0 +1,49 @@
+<div class="bg-profile">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col xl6 offset-xl3">
+                <div *ngIf="transporter$ | async as transporter;" class="profile">
+                    <span class="profile-headers">Ім'я: </span>
+                    
+                    <div class="name"> {{transporter.name}} </div>
+                    <br>
+                    <span class="profile-headers"> Прізвище: </span>
+                    
+                    <div class="name"> {{transporter.surname}} </div>
+                    <br>
+                    <span class="profile-headers">Номер телефону: </span>
+                    
+                    <div class="name"> {{transporter.phone}} </div>
+                    <br>
+                    <span class="profile-headers">Пошта: </span>
+                    <div class="name"> {{transporter.email}} </div>
+                    <br>
+                </div>
+                <div class="update-pass">
+                      <span class="pass-new">Зміна паролю: </span> <br>
+                      <form [formGroup]="formTransporter" (ngSubmit)="onSubmit()" style="width: 600px;">
+                        
+                        <div class="input-field col s4">
+                                <input formControlName="password" id="password" type="password" [ngClass]="{invalid: formTransporter.get('password').invalid && formTransporter.get('password').touched}">
+                                <label for="password">Пароль</label>
+                                <span class="helper-text red-text" *ngIf="formTransporter.get('password').invalid && formTransporter.get('password').touched" >
+                                      <span *ngIf="formTransporter.get('password').errors['required']">Пароль не повинен бути порожнім</span>
+                                      <span *ngIf="formTransporter.get('password').errors['minlength'] ">
+                                          Потрібно більше 6 символів</span>
+                                </span>
+                      </div>
+                        <div class="input-field col s4">
+                            <input formControlName="confirm" id="confirm" type="password" [ngClass]="{invalid: formTransporter.get('confirm').value !== formTransporter.get('password').value}">
+                            <label for="confirm">Пароль</label>
+                            <span class="helper-text red-text" *ngIf="formTransporter.get('confirm').value !== formTransporter.get('password').value" >Паролі не співпадають</span>
+                        </div>
+                        <div class="input-field col s2">
+                                <button  class="waves-effect waves-light btn  amber accent-4 large" type="submit" name="do_signup">Змінити</button>
+                            </div>
+                          
+                      </form>
+                  </div>
+            </div>
+        </div>
+    </div>
+  </div>

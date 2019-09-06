@@ -1,0 +1,25 @@
+.adress-header{
+    font-size: 25px;
+    color: white;
+}
+.select-add{
+    display: inline-block;
+    background-color: transparent;
+    border: 1px solid #0000;
+    border-bottom: 1px solid #9e9e9e;
+}
+	
+select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  color: white;
+  font-size: 15px;
+  background: url(http://www.stackoverflow.com/favicon.ico) 96% / 15% no-repeat #eee;
+}
+select:active, select:focus {
+    outline: none !important;
+  }
+  select:-moz-focus-inner {
+    border: 0 !important;
+  }

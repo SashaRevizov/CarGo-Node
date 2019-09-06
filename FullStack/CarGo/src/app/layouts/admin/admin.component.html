@@ -1,0 +1,53 @@
+<nav>
+    <div class="nav-wrapper">
+        <div class="container">
+            <a routerLink="/" class="brand-logo"><img src="../../../assets/img/Logo.png" alt="CarGo"></a>
+            <ul id="nav-mobile" class="right hide-on-med-and-down">
+                <li ><a routerLink="/admin/orders">Замовлення</a></li>
+                <li ><a routerLink="/admin/clients">Замовники</a></li>
+                <li ><a routerLink="/admin/transporters">Перевізники</a></li>
+                <li><a href="#" class="exit-client" (click)="logout($event)">Вихід</a></li>
+
+
+            </ul>
+        </div>
+    </div>
+  </nav>
+
+  <router-outlet></router-outlet>
+
+  <footer class="page-footer">
+        <div class="container">
+            <div class="row">
+
+                <div class="col l4 s12">
+                    <h5 class="white-text">Меню</h5>
+                    <ul>
+                          <li><a class="grey-text text-lighten-3" routerLink="/">Головна</a></li>
+                          <li><a class="grey-text text-lighten-3" routerLink="/transporter">Пошук вантажу</a></li>
+                          <li><a class="grey-text text-lighten-3" routerLink="/client">Розміщення вантажу</a></li>
+                          <li><a class="grey-text text-lighten-3" routerLink="/about">Про нас</a></li>
+                    </ul>
+                </div>
+                <div class="col l2 offset-xl2 s12">
+                    <h5 class="white-text">Звязок з нами</h5>
+                    <ul>
+                        <li><a href="mailto:support@gmail.com" class="grey-text text-lighten-3">support@gmail.com</a></li>
+                        
+
+                    </ul>
+                </div>
+
+            </div>
+
+        </div>
+        <div class="footer-copyright">
+            <div class="container">
+                © 2019 Revizov Sasha
+            </div>
+        </div>
+  </footer>
+
+
+
+

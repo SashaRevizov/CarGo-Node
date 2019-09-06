@@ -1,0 +1,38 @@
+{
+  "name": "cargo",
+  "version": "1.0.0",
+  "description": "cargo",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "server": "nodemon index",
+    "client": "npm start --prefix CarGo",
+    "dev": "concurrently \"npm run server\" \"npm run client\" "
+  },
+  "author": "Sasha Revizov",
+  "license": "ISC",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.18.3",
+    "bunyan": "^1.8.12",
+    "email-verification": "^0.4.6",
+    "express": "^4.16.4",
+    "jquery-parallax.js": "^1.5.0",
+    "jsonwebtoken": "^8.5.1",
+    "moment": "^2.24.0",
+    "mongoimport": "^1.0.6",
+    "mongoose": "^5.5.3",
+    "mongoose-auto-increment": "^5.0.1",
+    "multer": "^1.4.1",
+    "mysql": "^2.17.1",
+    "nodemailer": "^6.1.1",
+    "passport": "^0.4.0",
+    "passport-jwt": "^4.0.0",
+    "randomstring": "^1.1.5",
+    "v": "^0.3.0"
+  },
+  "devDependencies": {
+    "concurrently": "^4.1.0",
+    "nodemon": "^1.19.0"
+  }
+}

@@ -1,0 +1,18 @@
+.admin-sig{
+    background-color:rgba(45,45,45,0.7);
+    text-align: center;
+    margin-top:200px;
+    padding:50px
+}
+
+.admin-sig h1{
+    color:white;
+    margin-top: 0;
+}
+.admin-sig.admin-log{
+    margin-left:80px;
+    border:none;
+    border-radius:10px;
+    margin-bottom:20px;
+    text-align:center
+}

@@ -1,0 +1,51 @@
+<div class="bg-active-order">
+    <div class="container">
+      <div class="row">
+        <div class="col xl8 offset-xl2">
+          <div *ngIf="users$ | async as users;"  class="active-order">
+            <a  class="info-link"   *ngFor="let user of users" (click)="selectUser(user)" >
+              <div class="item">
+                  <Span>Замовник:</Span>
+                  <p>{{user.name}}  {{user.surname}}</p>
+                  <Span>Телефон:</Span>
+                  <p>{{user.phone}}</p>
+              </div>
+            </a>
+        </div>
+      </div>
+    </div>
+    </div>
+</div>
+
+
+    <div  class="modal modal-fixed-footer" #modal>
+      <div *ngIf="selectedUser" class="modal-content" >
+      <h4 class="mb1">Замовник</h4>
+      <table class="highlight">
+        <thead>
+              <tr>
+                <th>Ім'я</th>
+                <th>{{selectedUser.name}} - {{selectedUser.surname}}</th>
+              </tr>
+              <tr>
+                <th>Телефон</th>
+                <th>{{selectedUser.phone}}</th>
+              </tr>
+              <tr>
+                <th>Пошта</th>
+                <th>{{selectedUser.email}}</th>
+              </tr>
+              <tr>
+                <th>Підтвердження</th>
+                <th *ngIf="selectedUser.confirmed === true">Підтверджен</th>
+                <th *ngIf="selectedUser.confirmed === false">Не підтверджен</th>
+              </tr>
+              </thead>
+            </table>
+            <div class="row">
+              <div class="input-field col s3 offset-xl6">
+                  <button   class="btn amber accent-4" (click)="delete()">Видалити</button>
+                </div>
+            </div>
+          </div>
+          </div>

@@ -1,0 +1,24 @@
+<div class="section log">
+    <div class="container">
+        <div class="row">
+            <div class="col l5 offset-l4">
+                <div class="login-bg login-client">
+                    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+                        <div class="input-field col s12">
+                            <input formControlName="email" id="email" type="email" [ngClass]="{invalid: form.get('email').invalid && form.get('email').touched}">
+                            <label for="email">Email</label>
+                            <span class="helper-text red-text" *ngIf="form.get('email').invalid && form.get('email').touched" >
+                                  <span *ngIf="form.get('email').errors['required']">Email не повинен бути порожнім</span>
+                                  <span *ngIf="form.get('email').errors['email']">Введіть вірний email</span>
+                            </span>
+                        </div>
+                        <div class="log-new">
+                            <a class="a-log" routerLink="/client/register">Створити акаунт</a>
+                            <button [disabled]="form.invalid" class="btn waves-effect waves-light amber accent-4" type="submit" >Ок</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>

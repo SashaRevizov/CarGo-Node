@@ -1,0 +1,36 @@
+<div class="section log">
+    <div class="container">
+        <div class="row">
+            <div class="col l5 offset-l4">
+                <div class="login-bg login-transporter">
+                    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+                        <div class="input-field col s12">
+                            <input formControlName="email" id="email" type="email" [ngClass]="{invalid: form.get('email').invalid && form.get('email').touched}">
+                            <label for="email">Email</label>
+                            <span class="helper-text red-text" *ngIf="form.get('email').invalid && form.get('email').touched" >
+                                  <span *ngIf="form.get('email').errors['required']">Email не повинен бути порожнім</span>
+                                  <span *ngIf="form.get('email').errors['email']">Введіть вірний email</span>
+                            </span>
+                        </div>
+                        <div class="input-field col s12">
+                            <input formControlName="password" id="password" type="password" [ngClass]="{invalid: form.get('email').invalid && form.get('email').touched}">
+                            <label for="password">Пароль</label>
+                            <span class="helper-text red-text" *ngIf="form.get('password').invalid && form.get('password').touched" >
+                                  <span *ngIf="form.get('password').errors['required']">Пароль не повинен бути порожнім</span>
+                                  <span *ngIf="form.get('password').errors['minlength'] ">
+                                      Потрібно більше 6 символів</span>
+                            </span>
+                        </div>
+                        <div class="log-new">
+                            <a class="a-log" routerLink="/transporter/register">Створити акаунт</a>
+                            <button [disabled]="form.invalid" class="btn waves-effect waves-light amber accent-4" type="submit" name="action">Вхід</button>
+                        </div>
+                        <div class="refresh">
+                            <a routerLink="/transporter/refresh"><span>Відновлення паролю</span></a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>

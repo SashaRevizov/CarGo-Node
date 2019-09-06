@@ -1,0 +1,87 @@
+<div class="section log">
+
+    <div class="container">
+        <div class="row">
+            <div class="col xl2 offset-xl2">
+                <div class="preview">
+                    <img class="responsive-img h200" [src]="imagePreview" *ngIf="imagePreview">
+                </div>
+            </div>
+            <div class="col l5">
+                <div class="login-transporter">
+                    <a class="change-right" routerLink="/client/register">Замовник</a>
+                    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+
+                    <div class="input-field col s6">
+                        <input formControlName="name" id="name" type="text" [ngClass]="{invalid: form.get('name').invalid && form.get('name').touched}">
+                        <label for="name">Ім'я</label>
+                        <span class="helper-text red-text" *ngIf="form.get('name').invalid && form.get('name').touched" >
+                              <span *ngIf="form.get('name').errors['required']">Ім'я неповинно бути порожнім</span>
+                              <span *ngIf="form.get('name').errors['pattern']">Ім'я не повинно мати символи</span>
+                        </span>
+                    </div>
+                    <div class="input-field col s6">
+                        <input formControlName="surname" id="surname" type="text" [ngClass]="{invalid: form.get('surname').invalid && form.get('surname').touched}">
+                        <label for="surname">Фамілія</label>
+                        <span class="helper-text red-text" *ngIf="form.get('surname').invalid && form.get('surname').touched" >
+                              <span *ngIf="form.get('surname').errors['required']">Фамілія неповинна бути порожня</span>
+                              <span *ngIf="form.get('surname').errors['pattern']">Фамілія не повинна мати символи</span>
+                        </span>
+                    </div>
+                    <div class="input-field col s12">
+                          <input formControlName="email" id="email" type="email" [ngClass]="{invalid: form.get('email').invalid && form.get('email').touched}">
+                            <label for="email">Email</label>
+                            <span class="helper-text red-text" *ngIf="form.get('email').invalid && form.get('email').touched" >
+                                  <span *ngIf="form.get('email').errors['required']">Email не повинен бути порожнім</span>
+                                  <span *ngIf="form.get('email').errors['email']">Введіть вірний email</span>
+                            </span>
+                    </div>
+                    <div class="input-field col s12">
+                            <input formControlName="phone" id="phone"  [textMask]="{mask: mask}" type="tel" [ngClass]="{invalid: form.get('phone').invalid && form.get('phone').touched}">
+                            <label for="phone">Номер телефону</label>
+                    </div>
+
+                    <div class="input-field col s6">
+                          <input formControlName="password" id="password" type="password" [ngClass]="{invalid: form.get('password').invalid && form.get('password').touched}">
+                          <label for="password">Пароль</label>
+                          <span class="helper-text red-text" *ngIf="form.get('password').invalid && form.get('password').touched" >
+                                <span *ngIf="form.get('password').errors['required']">Пароль не повинен бути порожнім</span>
+                                <span *ngIf="form.get('password').errors['minlength'] ">
+                                    Потрібно більше 6 символів</span>
+                          </span>
+                    </div>
+
+                    <div class="input-field col s6">
+                          <input formControlName="confirm" id="confirm" type="password" [ngClass]="{invalid: form.get('confirm').value !== form.get('password').value}">
+                          <label for="confirm">Пароль</label>
+                          <span class="helper-text red-text" *ngIf="form.get('confirm').value !== form.get('password').value" >Паролі не співпадають</span>
+                    </div>
+
+                    <div class="input-field col s12">
+                        <input
+                        type="file"
+                        class="dn"
+                        (change)="onFileUpload($event)"
+                        #input
+                        >
+                    <span class="reg-span-file">Фотографія водійського посвідчення</span>
+                      <button
+                        (click)="triggerClick()"
+                        [disabled]="form.disabled"
+                        type="button"
+                        class="waves-effect waves-light btn right"
+                      >
+                        Файл
+                      </button>
+                    </div>
+
+                        <div class="reg-new">
+                              <button [disabled]="form.invalid" class="btn waves-effect waves-light amber accent-4" type="submit" name="action">Створити</button>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>

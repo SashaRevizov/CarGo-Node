@@ -1,0 +1,39 @@
+.support{
+    background-color: #2bbbad;
+    height: 250px;
+    color: white;
+    padding-top: 30px;
+    font-size: 20px;
+}
+.support p{
+   padding-top: 25px;
+}
+.about p{
+    font-size: 20px;
+}
+.about h2{
+    font-weight: 600;
+}
+
+.information{
+    overflow: hidden;
+    height: 250px;
+    margin-bottom: 100px;
+    transition: 1s 
+}
+
+.opened{
+    height: 1000px;
+    transition: 1s 
+}
+#show{
+    position: relative;
+    left: 900px;
+    top: -40px
+}
+#close{
+    position: relative;
+    left: 930px;
+    top: -100px;
+    display: none;
+}

@@ -1,0 +1,86 @@
+<div class="bg-active-order">
+    <div class="container">
+        <div class="row">
+            <div class="col xl8 offset-xl2">
+                <div *ngIf="order$ | async as order;" class="active-order">
+                   <a class="info-link"  *ngFor="let or of order" (click)="selectOrder(or)" >
+                    <div  class="active-order-item">
+                        <div class="active-order-item-date">
+                            <span >{{or.dateStart}}</span><br><br>
+                            <span>{{or.dateEnd}}</span>
+                        </div>
+                        <div class="active-order-item-way">
+                            <span>{{or.startCity}} - {{or.endCity}}</span>
+                        </div>
+                        
+                        <div *ngIf="or.status === 'Завершено';" class="transporter-block">
+                            <a class="active-order-item-transporter"><img src="../../assets/img/Output.png"></a>
+                        </div>
+                    
+                    </div>
+                  </a>
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>
+  
+  
+  <div class="modal modal-fixed-footer" #modal>
+        <div class="modal-content" *ngIf="selectedOrder">
+          <h4 class="mb1">Замовлення №{{selectedOrder.orderNum}}</h4>
+          <table class="highlight">
+            <thead>
+            <tr>
+              <th>Дата доставки</th>
+              <th>{{selectedOrder.dateStart}} - {{selectedOrder.dateEnd}}</th>
+            </tr>
+            <tr>
+              <th>Місто</th>
+              <th>{{selectedOrder.startCity}} - {{selectedOrder.endCity}}</th>
+            </tr>
+            <tr>
+              <th>Адреса</th>
+              <th>{{selectedOrder.startAdress}} - {{selectedOrder.endAdress}}</th>
+            </tr>
+            <tr>
+              <th>Тип</th>
+              <th>{{selectedOrder.type}}</th>
+            </tr>
+            <tr>
+              <th>Розміри вантажу</th>
+            </tr>
+            <tr>
+              <th>Ширина</th>
+              <th>{{selectedOrder.width}} м.</th>
+            </tr>
+            <tr>
+              <th>Довжина</th>
+              <th>{{selectedOrder.length}} м.</th>
+            </tr>
+            <tr>
+              <th>Висота</th>
+              <th>{{selectedOrder.height}} м.</th>
+            </tr>
+            <tr>
+              <th>Вага</th>
+              <th>{{selectedOrder.weight}} т.</th>
+            </tr>
+            <tr>
+              <th>Статус</th>
+              <th>{{selectedOrder.status}}</th>
+            </tr>
+            </thead>
+           
+            
+          </table>
+         
+        <div class="modal-footer">
+          <button
+            class="modal-action waves-effect waves-light btn modal-trigger amber accent-4"
+            (click)="closeModal()"
+          >
+            Закрити
+          </button>
+        </div>
+      </div>

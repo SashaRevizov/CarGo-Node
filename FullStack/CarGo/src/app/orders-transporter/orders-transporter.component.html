@@ -1,0 +1,111 @@
+<div class="bg-active-order">
+  <div class="container">
+      <div class="row">
+          <div class="col xl8 offset-xl2">
+              <div *ngIf="order$ | async as order;" class="active-order">
+                 <a class="info-link"  *ngFor="let or of order" (click)="selectOrder(or)" >
+                  <div  class="active-order-item">
+                      <div class="active-order-item-date">
+                          <span >{{or.dateStart}}</span><br><br>
+                          <span>{{or.dateEnd}}</span>
+                      </div>
+                      <div class="active-order-item-way">
+                          <span>{{or.startCity}} - {{or.endCity}}</span>
+                      </div>
+
+                      <div *ngIf="or.transporter !== null; else empty" class="transporter-block" >
+                          <a class="active-order-item-transporter"><img src="../../assets/img/Input.png"></a>
+                      </div>
+                      <ng-template #empty>
+                        <div class="transporter-block">
+
+                           <span class=" searching">Пошук перевізника</span>
+                        </div>
+
+                      </ng-template>
+                  </div>
+                </a>
+
+
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+
+
+<div class="modal modal-fixed-footer" #modal>
+      <div class="modal-content" *ngIf="selectedOrder">
+        <h4 class="mb1">Замовлення №{{selectedOrder.orderNum}}</h4>
+        <table class="highlight">
+          <thead>
+          <tr>
+            <th>Дата доставки</th>
+            <th>{{selectedOrder.dateStart}} - {{selectedOrder.dateEnd}}</th>
+          </tr>
+          <tr>
+            <th>Місто</th>
+            <th>{{selectedOrder.startCity}} - {{selectedOrder.endCity}}</th>
+          </tr>
+          <tr>
+            <th>Адреса</th>
+            <th>{{selectedOrder.startAdress}} - {{selectedOrder.endAdress}}</th>
+          </tr>
+          <tr>
+            <th>Тип</th>
+            <th>{{selectedOrder.type}}</th>
+          </tr>
+          <tr>
+            <th>Статус</th>
+            <th>{{selectedOrder.status}}</th>
+          </tr>
+          <tr>
+            <th>Розміри вантажу</th>
+          </tr>
+          <tr>
+            <th>Ширина</th>
+            <th>{{selectedOrder.width}} м.</th>
+          </tr>
+          <tr>
+            <th>Довжина</th>
+            <th>{{selectedOrder.length}} м.</th>
+          </tr>
+          <tr>
+            <th>Висота</th>
+            <th>{{selectedOrder.height}} м.</th>
+          </tr>
+          <tr>
+            <th>Вага</th>
+            <th>{{selectedOrder.weight}} т.</th>
+          </tr>
+          </thead>
+
+
+        </table>
+
+
+        <div class="row">
+          <form [formGroup]="form" (ngSubmit)="onSubmit()">
+
+              <div class="input-field col xl3">
+                  <input formControlName="price" id="price" type="number" [ngClass]="{invalid: form.get('price').invalid && form.get('price').touched}">
+                  <label for="price">Ціна</label>
+                  <span class="helper-text red-text" *ngIf="form.get('price').invalid && form.get('price').touched" >
+                        <span *ngIf="form.get('price').errors['required']">Введіть ціну</span>
+                        <span *ngIf="form.get('price').errors['min'] ">Невірна ціна</span>
+                  </span>
+
+              </div>
+              <div class="input-field col s3 offset-xl1">
+                  <button [disabled]="form.invalid" class="modal-action waves-effect waves-light btn" type="submit">Прийняти</button>
+              </div>
+
+
+          </form>
+          <div class="input-field col s2 offset-xl1">
+            <button class="modal-action waves-effect waves-light btn modal-trigger amber accent-4" type="button" (click)="closeModal()">Закрити</button>
+        </div>
+
+
+
+    </div>
