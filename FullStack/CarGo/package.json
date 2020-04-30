@@ -24,7 +24,7 @@
     "@types/jquery": "^3.3.29",
     "angular2-text-mask": "^9.0.0",
     "core-js": "^2.5.4",
-    "jquery": "^3.4.1",
+    "jquery": "^3.5.0",
     "jquery-parallax.js": "^1.5.0",
     "materialize-css": "^1.0.0-rc.2",
     "ng2-parallaxscroll": "^2.1.0",
