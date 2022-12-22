@@ -18,7 +18,7 @@
     "email-verification": "^0.4.6",
     "express": "^4.16.4",
     "jquery-parallax.js": "^1.5.0",
-    "jsonwebtoken": "^8.5.1",
+    "jsonwebtoken": "^9.0.0",
     "moment": "^2.24.0",
     "mongoimport": "^1.0.6",
     "mongoose": "^5.5.3",
